@@ -26,10 +26,6 @@ interface Theme {
     fontFamily: String[];
 }
 
-interface props {
-    theme: Theme;
-}
-
 /**
  * THEMES
  */
@@ -89,29 +85,17 @@ const Div = styled.div`
         `};
 `;
 
-const FlexBox = styled(Div)`
-    display: flex;
-    ${(props) =>
-        props.noWrap &&
-        css`
-            flex-wrap: nowrap;
-        `};
-`;
-
-export const CenteredColumn = styled(FlexBox)`
-    flex-direction: column;
-    justify-content: center;
-`;
-
-export const CenteredRow = styled(FlexBox)`
-    flex-direction: row;
-    justify-content: center;
-`;
-
-export const SpacedRow = styled(Div)`
-    width: 100%;
+export const ExpandingDiv = styled(Div)`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 45%));
-    justify-content: space-between;
-    align-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    grid-template-colums: repeat(
+        auto-fit,
+        minmax(
+            ${(props) =>
+                props.itemwidth
+                    ? `${props.itemwidth[0]}, ${props.itemwidth[1]}`
+                    : '210px, 1fr'}
+        )
+    );
 `;

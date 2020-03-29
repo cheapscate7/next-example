@@ -1,8 +1,26 @@
-const Home = () => <h1>Hello world!</h1>;
+import items from '../api/items.js';
+import Search from '../components/Search';
+import ItemsViewer from '../components/ItemsViewer';
+import { NextPage } from 'next';
 
-Home.getInitialProps = async ({ req }) => {
-    const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-    return { userAgent }
+type HomeProps = {
+    items: IItems[];
+};
+
+const Home: NextPage<HomeProps> = ({ items }) => {
+    const searchres = '';
+    return (
+        <>
+            <Search value={searchres} />
+            <ItemsViewer items={items} />
+        </>
+    );
+};
+
+Home.getInitialProps = async () => {
+    return {
+        items,
+    };
 };
 
 export default Home;

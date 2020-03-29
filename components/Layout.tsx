@@ -116,4 +116,5 @@ const Nav = styled.nav`
 
 const Main = styled.main`
     float: right;
+    width: calc(100% - 5rem);
 `;
