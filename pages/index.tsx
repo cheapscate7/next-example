@@ -3,6 +3,7 @@ import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
 import { RoundedImg } from '../components/StyledComponents';
+import JobsSearch from "../components/JobsSearch/JobsSearch";
 
 type HomeProps = {
     title: string;
@@ -23,6 +24,7 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob }) => {
                 </div>
                 <div>
                     <BlobViewer items={blob} />
+                    <JobsSearch></JobsSearch>
                 </div>
             </Inner>
         </>

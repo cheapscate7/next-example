@@ -20,9 +20,6 @@ export default BlobViewer;
 const BlobList = styled.ul`
   list-style-type: none;
   margin-top: 3.5rem;
-  //padding: 0.5rem;
-  // border-radius: 2px;
-  // box-shadow: ${(props) => props.theme.shadows[0]};
 `;
 
 type BlobItemProps = {

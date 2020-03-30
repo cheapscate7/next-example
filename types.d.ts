@@ -3,6 +3,16 @@ declare interface IBlob {
     description: string;
 }
 
+declare interface IJobs {
+    id: number,
+    company_name: string,
+    position: string,
+    duration: string[],
+    location: string,
+    worked_with: string[],
+    description: string
+}
+
 declare interface Theme {
     colors: {
         background: string;
@@ -14,17 +24,17 @@ declare interface Theme {
         background_contrast: string;
     };
     fontWeights: {
-        light: Number;
-        normal: Number;
-        heavy: Number;
-        bold: string | Number;
+        light: number;
+        normal: number;
+        heavy: number;
+        bold: string | number;
     };
     fontSizes: {
-        jumbotron: Number[];
-        heading: Number[];
-        subHeading: Number[];
-        text: Number[];
-        subText: Number[];
+        jumbotron: number[];
+        heading: number[];
+        subHeading: number[];
+        text: number[];
+        subText: number[];
     };
     shadows: string[];
     fontFamily: string[];
