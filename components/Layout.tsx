@@ -35,7 +35,7 @@ const Layout: FC = (props) => {
                             router.pathname === '/about' ? 'active' : ''
                         }`}
                     >
-                        <Link href={'/'}>
+                        <Link href={'/about'}>
                             <a>
                                 <FontAwesomeIcon icon={faBook} />
                                 <h1 className="text"> About this project</h1>
