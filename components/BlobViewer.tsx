@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { ExpandingDiv } from './StyledComponents';
 import styled, { css } from 'styled-components';
-import SanitizedHTML from 'react-sanitized-html';
 
 type BlobViewerProps = {
     items: IBlob[];
