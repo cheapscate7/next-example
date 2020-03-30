@@ -1,5 +1,5 @@
-import index from '../api/index.js';
-import jobs from '../api/jobs.js';
+import index from '../mock/index.js';
+import jobs from '../mock/jobs.js';
 import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
