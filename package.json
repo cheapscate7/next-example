@@ -21,6 +21,7 @@
         "next": "^9.3.2",
         "next-fonts": "^1.0.3",
         "react": "^16.13.1",
+        "react-debounce-input": "^3.2.2",
         "react-dom": "^16.13.1",
         "styled-components": "^5.0.1",
         "yarn": "^1.22.4"

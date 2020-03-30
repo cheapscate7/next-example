@@ -21,7 +21,7 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
             <Title>{title}</Title>
             <Inner>
                 <div>
-                    <Icon radius="2px" elevated src={'/me.jpg'} />{' '}
+                    <Icon radius="2px" elevated src={'/me.jpg'} alt="picture_of_me" />{' '}
                     <Subtitle dangerouslySetInnerHTML={subtitleMarkup} />
                 </div>
                 <Widgets>
@@ -71,6 +71,7 @@ const Icon = styled(RoundedImg)`
 
 const Inner = styled.section`
     padding: 5rem 10rem;
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,4 +79,7 @@ const Inner = styled.section`
 
 const Widgets = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3.5rem;
 `;

@@ -19,7 +19,7 @@ export default BlobViewer;
 
 const BlobList = styled.ul`
   list-style-type: none;
-  margin-top: 3.5rem;
+  width: 50%;
 `;
 
 type BlobItemProps = {
@@ -38,7 +38,7 @@ const BlobItem: React.FC<BlobItemProps> = ({ item }) => {
 const Item = styled.li`
     margin-bottom: 2rem;
     display: grid;
-    grid-template-columns: 30rem calc(100% - 30rem);
+    grid-template-columns: 50% 50%;
     &:last-child {
         margin-bottom: 0.1rem;
     }
@@ -46,7 +46,7 @@ const Item = styled.li`
         ${(props) => css`
             color: ${props.theme.colors.color_two};
             font-weight: ${props.theme.fontWeights.bold};
-            font-size: ${props.theme.fontSizes.heading[0]}pt;
+            font-size: 1.3rem;
         `};
         margin: 0.1rem;
     }

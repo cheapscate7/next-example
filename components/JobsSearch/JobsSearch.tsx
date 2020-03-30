@@ -1,17 +1,42 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
+import {DebounceInput} from 'react-debounce-input';
+import {
+    useSalesChannelList,
+    JobsListActions,
+} from '../../hooks/useJobsSearch';
 
 type JobsSearchProps = {
     items: IJob[];
 };
 
 const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
+    const { dispatch, state } = useSalesChannelList();
+
+    React.useEffect(() => {
+        dispatch(JobsListActions.setList(items));
+    }, []);
+
     return (
         <Container>
             <ContainerTitle>Where I have worked:</ContainerTitle>
-            <SearchBar type="text" placeholder="Search" />
+            <DebounceInput
+                type="text"
+                placeholder="Search"
+                debounceTimeout={200}
+                element={SearchBar}
+                onChange={(e) => {
+                    dispatch(JobsListActions.setList(items));
+                    if(e.target.value === '') {
+                        dispatch(JobsListActions.reset());
+                    } else {
+                        dispatch(JobsListActions.setSearchString(e.target.value));
+                    }
+                }}
+                value={state.searchString}
+            />
             <Items>
-                {items.map((job, index) => {
+                {state.jobs.map((job, index) => {
                     return (
                         <Job job={job} key={index + '_' + job.company_name} />
                     );
@@ -73,6 +98,6 @@ const JobContainer = styled.li`
         color: ${(props) => props.theme.colors.color_three};
     }
     .duration {
-      font-style: italic;
+        font-style: italic;
     }
 `;
