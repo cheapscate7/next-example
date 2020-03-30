@@ -25,7 +25,7 @@ const index = {
                 "BSc. Computer Science with International Experience <span class='italics'>- Bangor University</span>",
         },
         {
-            title: 'Favourite frameworks?',
+            title: 'Favourite frameworks/Libraries?',
             description: 'Svelte but I also love React and Angular',
         },
         {

@@ -27,7 +27,7 @@ export const ThemeMain: Theme = {
         text: [9, 11],
         subText: [7, 9],
     },
-    shadows: ['inset 0 0 0 1px #ddd, 0 0 10px 0 rgba(0,0,0,.1)'],
+    shadows: ['inset 0 0 0 1px #ddd, 0 0 10px 0 rgba(0,0,0,.1)', '0px 0px 6px 0px rgba(0,0,0,0.75)'],
     fontFamily: [
         '"Roboto", -apple-system, sans-serif',
         '"Poppins", -apple-system, sans-serif',
@@ -148,7 +148,7 @@ const Img = styled.img`
     ${(props) =>
         props.elevated &&
         css`
-            box-shadow: ${props.theme.shadows[0]};
+            box-shadow: ${props.theme.shadows[1]};
         `};
 `;
 
