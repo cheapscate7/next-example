@@ -3,7 +3,7 @@ declare interface IBlob {
     description: string;
 }
 
-declare interface IJobs {
+declare interface IJob {
     id: number,
     company_name: string,
     position: string,

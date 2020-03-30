@@ -1,17 +1,19 @@
 import index from '../api/index.js';
+import jobs from '../api/jobs.js';
 import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
-import { RoundedImg } from '../components/StyledComponents';
+import {ExpandingDiv, RoundedImg} from '../components/StyledComponents';
 import JobsSearch from "../components/JobsSearch/JobsSearch";
 
 type HomeProps = {
     title: string;
     subtitle: string;
     blob: IBlob[];
+    jobs: IJob[];
 };
 
-const Home: NextPage<HomeProps> = ({ title, subtitle, blob }) => {
+const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
     const searchres = '';
     const subtitleMarkup = { __html: subtitle };
     return (
@@ -22,17 +24,20 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob }) => {
                     <Icon radius="2px" elevated src={'/me.jpg'} />{' '}
                     <Subtitle dangerouslySetInnerHTML={subtitleMarkup} />
                 </div>
-                <div>
+                <Widgets>
                     <BlobViewer items={blob} />
-                    <JobsSearch></JobsSearch>
-                </div>
+                    <JobsSearch items={jobs}/>
+                </Widgets>
             </Inner>
         </>
     );
 };
 
 Home.getInitialProps = async () => {
-    return index;
+    return {
+        ...index,
+        jobs
+    };
 };
 
 export default Home;
@@ -69,4 +74,8 @@ const Inner = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+const Widgets = styled.div`
+  display: flex;
 `;

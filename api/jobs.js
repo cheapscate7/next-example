@@ -50,3 +50,5 @@ const jobs = [
             'Built simple company websites for small start-up businesses and set up the web hosting for them. I was able to develop my skills with designing UX due to the amount of freedom given to me by some clients.',
     },
 ];
+
+export default jobs;
