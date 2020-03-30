@@ -19,6 +19,8 @@
         "@fortawesome/free-solid-svg-icons": "^5.13.0",
         "@fortawesome/react-fontawesome": "^0.1.9",
         "add": "^2.0.6",
+        "cors": "^2.8.5",
+        "isomorphic-unfetch": "^3.0.0",
         "next": "^9.3.2",
         "next-fonts": "^1.0.3",
         "react": "^16.13.1",

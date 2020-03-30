@@ -1,10 +1,9 @@
-import index from '../mock/index.js';
-import jobs from '../mock/jobs.js';
 import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
-import {ExpandingDiv, RoundedImg} from '../components/StyledComponents';
-import JobsSearch from "../components/JobsSearch/JobsSearch";
+import fetch from 'isomorphic-unfetch';
+import { ExpandingDiv, RoundedImg } from '../components/StyledComponents';
+import JobsSearch from '../components/JobsSearch/JobsSearch';
 
 type HomeProps = {
     title: string;
@@ -21,12 +20,17 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
             <Title>{title}</Title>
             <Inner>
                 <div>
-                    <Icon radius="2px" elevated src={'/me.jpg'} alt="picture_of_me" />{' '}
+                    <Icon
+                        radius="2px"
+                        elevated
+                        src={'/me.jpg'}
+                        alt="picture_of_me"
+                    />{' '}
                     <Subtitle dangerouslySetInnerHTML={subtitleMarkup} />
                 </div>
                 <Widgets>
                     <BlobViewer items={blob} />
-                    <JobsSearch items={jobs}/>
+                    <JobsSearch items={jobs} />
                 </Widgets>
             </Inner>
         </>
@@ -34,9 +38,16 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
 };
 
 Home.getInitialProps = async () => {
+    const index_response = await fetch(
+        'http://127.0.0.1:3000/api/index'
+    ).then((resp) => resp.json());
+    const jobs_response = await fetch(
+        'http://127.0.0.1:3000/api/jobs'
+    ).then((resp) => resp.json());
+
     return {
-        ...index,
-        jobs
+        ...index_response,
+        jobs: jobs_response,
     };
 };
 
@@ -63,10 +74,10 @@ const Subtitle = styled.p`
 `;
 
 const Icon = styled(RoundedImg)`
-  float: left;
-  shape-outside: inset();
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+    float: left;
+    shape-outside: inset();
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
 `;
 
 const Inner = styled.section`
@@ -78,8 +89,8 @@ const Inner = styled.section`
 `;
 
 const Widgets = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 3.5rem;
 `;
