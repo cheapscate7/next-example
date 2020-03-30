@@ -38,6 +38,9 @@ export const ThemeMain: Theme = {
  * GLOBAL STYLES
  **/
 export const GlobalStyle = createGlobalStyle`
+  /**
+  Roboto
+   */
   @font-face {
       font-family: 'Roboto';
       font-weight: bold;
@@ -46,7 +49,6 @@ export const GlobalStyle = createGlobalStyle`
   @font-face {
       font-family: 'Roboto';
       src: url('/fonts/Roboto-Regular.ttf');
-      src: url('/fonts/Roboto-italic.ttf');
       font-weight: 400;
   }
   @font-face {
@@ -54,6 +56,10 @@ export const GlobalStyle = createGlobalStyle`
       src: url('/fonts/Roboto-Light.ttf');
       font-weight: 300;
   }
+  
+  /**
+  Poppins
+   */
   @font-face {
       font-family: 'Poppins';
       src: url('/fonts/Poppins-Bold.ttf');
@@ -101,6 +107,9 @@ export const GlobalStyle = createGlobalStyle`
       ${(props) => css`
           font-family: ${props.theme.fontFamily[0]};
       `};
+    }
+    p {
+      margin: 0;
     }
     
 `;

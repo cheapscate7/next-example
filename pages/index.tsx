@@ -18,7 +18,7 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob }) => {
             <Title>{title}</Title>
             <Inner>
                 <div>
-                    <RoundedImg radius="2px" elevated src={'/me.jpg'} />{' '}
+                    <Icon radius="2px" elevated src={'/me.jpg'} />{' '}
                     <Subtitle dangerouslySetInnerHTML={subtitleMarkup} />
                 </div>
                 <div>
@@ -45,8 +45,7 @@ const Subtitle = styled.p`
     ${(props) => css`
         font-size: ${props.theme.fontSizes.subHeading[1]}pt;
     `};
-    width: calc(100% - 160px);
-    float: right;
+    width: 100%;
     text-align: right;
     .italics {
         font-style: italic;
@@ -54,6 +53,13 @@ const Subtitle = styled.p`
             color: ${props.theme.colors.color_three};
         `};
     }
+`;
+
+const Icon = styled(RoundedImg)`
+  float: left;
+  shape-outside: inset();
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 `;
 
 const Inner = styled.section`

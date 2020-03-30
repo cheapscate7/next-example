@@ -28,6 +28,10 @@ const index = {
             title: 'Favourite frameworks?',
             description: 'Svelte but I also love React and Angular',
         },
+        {
+            title: 'What do you love most about Frontend work?',
+            description: 'Knowing that people get to see and interact with what I have made',
+        },
     ],
 };
 
