@@ -1,26 +1,44 @@
-import items from '../api/items.js';
-import Search from '../components/Search';
-import ItemsViewer from '../components/ItemsViewer';
+import index from '../api/index.js';
+import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
+import styled, { css } from 'styled-components';
 
 type HomeProps = {
-    items: IItems[];
+    title: string;
+    subtitle: string;
+    blob: IBlob[];
 };
 
-const Home: NextPage<HomeProps> = ({ items }) => {
+const Home: NextPage<HomeProps> = ({ title, subtitle, blob }) => {
     const searchres = '';
     return (
         <>
-            <Search value={searchres} />
-            <ItemsViewer items={items} />
+            <Title>{title}</Title>
+            <div>
+                <img src={'/me.jpg'} /> <Subtitle>{subtitle}</Subtitle>
+            </div>
+            <BlobViewer items={blob} />
         </>
     );
 };
 
 Home.getInitialProps = async () => {
-    return {
-        items,
-    };
+    return index;
 };
 
 export default Home;
+
+const Title = styled.h1`
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
+`;
+
+const Subtitle = styled.p`
+    ${(props) => css`
+        font-size: ${props.theme.fontSizes.subHeading[1]}pt;
+    `};
+    width: calc(100% - 160px);
+    float: right;
+    text-align: right;
+`;

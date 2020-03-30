@@ -8,14 +8,13 @@ import { faHome, faAdjust, faBook } from '@fortawesome/free-solid-svg-icons';
 const Layout: FC = (props) => {
     const router = useRouter();
     return (
-        <>
+        <Container>
             <Nav>
                 <ul>
                     <li className="title">
                         <Link href={'/'}>
                             <a>
-                                <FontAwesomeIcon icon={faAdjust} />
-                                <span className="text">Example App</span>
+                                <h1>Matthew Badcock</h1>
                             </a>
                         </Link>
                     </li>
@@ -27,7 +26,7 @@ const Layout: FC = (props) => {
                         <Link href={'/'}>
                             <a>
                                 <FontAwesomeIcon icon={faHome} />
-                                <span className="text"> Home</span>
+                                <h1 className="text"> Home</h1>
                             </a>
                         </Link>
                     </li>
@@ -39,75 +38,61 @@ const Layout: FC = (props) => {
                         <Link href={'/'}>
                             <a>
                                 <FontAwesomeIcon icon={faBook} />
-                                <span className="text"> Other</span>
+                                <h1 className="text"> About this project</h1>
                             </a>
                         </Link>
                     </li>
                 </ul>
             </Nav>
             <Main>{props.children}</Main>
-        </>
+        </Container>
     );
 };
 
 export default Layout;
 
 const Nav = styled.nav`
-    width: 5rem;
-    background-color: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.color};
-    height: 100vh;
-    float: left;
-    //transition: all 2000ms ease;
-    &:hover {
-        width: 15rem;
-        ul {
-            li {
-                a {
-                    justify-content: space-between;
-                    .text {
-                        display: block;
-                    }
-                }
-            }
-        }
-    }
+    width: 100%;
+    background-color: ${(props) => props.theme.colors.color_one};
+    color: ${(props) => props.theme.colors.background};
     ul {
         list-style-type: none;
-        padding: 0.5rem;
-        height: 32px;
+        margin: auto;
         li {
-            &.title {
-                font-size: 1.2rem;
-                margin-bottom: 2rem;
-                color: ${(props) => props.theme.colors.color_alt};
-            }
-            &.item {
-                padding: 0.5rem 0.3rem 0.5rem 0.2rem;
-                cursor: pointer;
-                margin-bottom: 0.5rem;
-                border-radius: 2px;
-                .text {
-                    display: none;
-                }
-                &:hover {
-                    background-color: ${(props) =>
-                        props.theme.colors.background_alt};
-                }
-                &.active {
-                    background-color: ${(props) =>
-                        props.theme.colors.background_alt};
-                }
-            }
+            margin-left: 0.3rem;
+        }
+        .title {
+            margin: auto;
+            font-size: ${(props) => props.theme.fontSizes.heading[0]}pt;
+            text-align: center;
+        }
+        .item {
+            margin-bottom: 0.1rem;
+            padding: 0.5rem 0.2rem;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
             a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                display: grid;
+                grid-template-columns: 10% 90%;
+                .text,
                 svg {
-                    width: 2rem;
+                    margin: auto;
                 }
                 .text {
-                    display: none;
+                    font-weight: ${(props) => props.theme.fontWeights.normal};
+                    font-size: ${(props) =>
+                        props.theme.fontSizes.subHeading[0]}pt;
+                }
+            }
+            &:hover {
+                background-color: ${(props) => props.theme.colors.highlight};
+                .text {
+                    color: ${(props) => props.theme.colors.background};
+                }
+            }
+            &.active {
+                svg {
+                    color: ${(props) => props.theme.colors.color_three};
                 }
             }
         }
@@ -115,6 +100,17 @@ const Nav = styled.nav`
 `;
 
 const Main = styled.main`
-    float: right;
-    width: calc(100% - 5rem);
+    width: calc(100% - 1.5rem);
+    > * {
+        margin: 0.5rem 0.5rem 0.5rem 1rem;
+    }
+`;
+
+const Container = styled.section`
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100vh;
+    @media (min-width: 1024px) {
+        grid-template-columns: 204px calc(100% - 204px);
+    }
 `;

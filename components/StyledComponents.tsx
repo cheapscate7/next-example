@@ -1,43 +1,18 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 
-interface Theme {
-    colors: {
-        background: String;
-        background_alt: String;
-        color: String;
-        color_alt: String;
-        black: String;
-        highlight: String;
-    };
-    fontWeights: {
-        light: Number;
-        normal: Number;
-        heavy: Number;
-        bold: String | Number;
-    };
-    fontSizes: {
-        jumbotron: Number[];
-        heading: Number[];
-        subHeading: Number[];
-        text: Number[];
-        subText: Number[];
-    };
-    shadows: String[];
-    fontFamily: String[];
-}
-
 /**
  * THEMES
  */
 
 export const ThemeMain: Theme = {
     colors: {
-        background: '#1b1a3a',
-        background_alt: '#373654',
-        color: '#b6b6b6',
-        color_alt: '#ececec',
-        black: '#0d0d0d',
-        highlight: '#e0b703',
+        background: '#fffffe',
+        background_alt: '#1b1a3a',
+        color_one: '#fcdb67',
+        color_two: '#fc67aa',
+        color_three: '#5cbad1',
+        highlight: '#f15b4d',
+        background_contrast: '#171717',
     },
     fontWeights: {
         light: 300,
@@ -53,25 +28,81 @@ export const ThemeMain: Theme = {
         subText: [7, 9],
     },
     shadows: ['inset 0 0 0 1px #ddd, 0 0 10px 0 rgba(0,0,0,.1)'],
-    fontFamily: ['Roboto, -apple-system, sans-serif'],
+    fontFamily: [
+        '"Roboto", -apple-system, sans-serif',
+        '"Poppins", -apple-system, sans-serif',
+    ],
 };
 
 /**
  * GLOBAL STYLES
  **/
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+      font-family: 'Roboto';
+      font-weight: bold;
+      src: url('/fonts/Roboto-Bold.ttf');
+  }
+  @font-face {
+      font-family: 'Roboto';
+      src: url('/fonts/Roboto-Regular.ttf');
+      src: url('/fonts/Roboto-italic.ttf');
+      font-weight: 400;
+  }
+  @font-face {
+      font-family: 'Roboto';
+      src: url('/fonts/Roboto-Light.ttf');
+      font-weight: 300;
+  }
+  @font-face {
+      font-family: 'Poppins';
+      src: url('/fonts/Poppins-Bold.ttf');
+      font-weight: bold;
+  }
+  @font-face {
+      font-family: 'Poppins';
+      src: url('/fonts/Poppins-Regular.ttf');
+      font-weight: 400;
+  }
+  @font-face {
+      font-family: 'Poppins';
+      src: url('/fonts/Poppins-Light.ttf');
+      font-weight: 300;
+  }
   body {
-    margin: 0;
-    background-color: ${(props) => props.theme.colors.color_alt};
-    font-size: ${(props) => props.theme.fontSizes.text[1]}pt;
-    line-height: 1.5;
-    color: ${(props) => props.theme.colors.black};
-    font-family: ${(props) => props.theme.fontFamily[0]};
+        margin: 0;
+        padding: 0;
+        ${(props) => css`
+            background-color: ${props.theme.colors.background};
+            color: ${props.theme.colors.background_contrast};
+            font-size: ${props.theme.fontSizes.text[1]}pt;
+            font-family: ${props.theme.fontFamily[0]};
+        `};
+        line-height: 1.5;
   }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    ul {
+      padding: 0;
+    }
+    
+    h1 {
+        ${(props) => css`
+            font-family: ${props.theme.fontFamily[1]};
+            color: ${props.theme.colors.highlight};
+            font-weight: ${props.theme.fontWeights.bold};
+            font-size: ${props.theme.fontSizes.heading[1]}pt;
+        `};
+    }
+    h2, h3, h4 {
+      ${(props) => css`
+          font-family: ${props.theme.fontFamily[0]};
+      `};
+    }
+    
 `;
 /**
  * DIV
@@ -89,7 +120,7 @@ export const ExpandingDiv = styled(Div)`
     display: grid;
     gap: 1rem;
     width: 100%;
-    grid-template-colums: repeat(
+    grid-template-columns: repeat(
         auto-fit,
         minmax(
             ${(props) =>
