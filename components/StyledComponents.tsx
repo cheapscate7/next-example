@@ -21,7 +21,7 @@ export const ThemeMain: Theme = {
         bold: 'bold',
     },
     fontSizes: {
-        jumbotron: [26, 28],
+        jumbotron: [28, 30],
         heading: [18, 24],
         subHeading: [14, 16],
         text: [9, 11],
@@ -129,4 +129,20 @@ export const ExpandingDiv = styled(Div)`
                     : '210px, 1fr'}
         )
     );
+`;
+
+/**
+ * IMG
+ */
+
+const Img = styled.img`
+    ${(props) =>
+        props.elevated &&
+        css`
+            box-shadow: ${props.theme.shadows[0]};
+        `};
+`;
+
+export const RoundedImg = styled(Img)`
+    border-radius: ${(props) => props.radius || '5px'};
 `;

@@ -55,6 +55,7 @@ const Nav = styled.nav`
     width: 100%;
     background-color: ${(props) => props.theme.colors.color_one};
     color: ${(props) => props.theme.colors.background};
+    box-shadow: ${(props) => props.theme.shadows[0]};
     ul {
         list-style-type: none;
         margin: auto;
@@ -100,9 +101,16 @@ const Nav = styled.nav`
 `;
 
 const Main = styled.main`
-    width: calc(100% - 1.5rem);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.colors.highlight};
+        border-radius: 2px;
+    }
     > * {
-        margin: 0.5rem 0.5rem 0.5rem 1rem;
+        margin: 0.5rem 0 0.5rem 2rem;
     }
 `;
 

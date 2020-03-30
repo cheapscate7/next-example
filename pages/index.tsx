@@ -2,6 +2,7 @@ import index from '../api/index.js';
 import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
+import { RoundedImg } from '../components/StyledComponents';
 
 type HomeProps = {
     title: string;
@@ -11,13 +12,19 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ title, subtitle, blob }) => {
     const searchres = '';
+    const subtitleMarkup = { __html: subtitle };
     return (
         <>
             <Title>{title}</Title>
-            <div>
-                <img src={'/me.jpg'} /> <Subtitle>{subtitle}</Subtitle>
-            </div>
-            <BlobViewer items={blob} />
+            <Inner>
+                <div>
+                    <RoundedImg radius="2px" elevated src={'/me.jpg'} />{' '}
+                    <Subtitle dangerouslySetInnerHTML={subtitleMarkup} />
+                </div>
+                <div>
+                    <BlobViewer items={blob} />
+                </div>
+            </Inner>
         </>
     );
 };
@@ -31,7 +38,7 @@ export default Home;
 const Title = styled.h1`
     margin-top: 3rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
+    font-size: ${(props) => props.theme.fontSizes.jumbotron[0]}pt;
 `;
 
 const Subtitle = styled.p`
@@ -41,4 +48,17 @@ const Subtitle = styled.p`
     width: calc(100% - 160px);
     float: right;
     text-align: right;
+    .italics {
+        font-style: italic;
+        ${(props) => css`
+            color: ${props.theme.colors.color_three};
+        `};
+    }
+`;
+
+const Inner = styled.section`
+    padding: 5rem 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
