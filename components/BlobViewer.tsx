@@ -19,7 +19,7 @@ export default BlobViewer;
 
 const BlobList = styled.ul`
   list-style-type: none;
-  width: 50%;
+  width: 65%;
 `;
 
 type BlobItemProps = {
@@ -39,6 +39,7 @@ const Item = styled.li`
     margin-bottom: 2rem;
     display: grid;
     grid-template-columns: 50% 50%;
+    gap: 5px;
     &:last-child {
         margin-bottom: 0.1rem;
     }
@@ -58,5 +59,10 @@ const Item = styled.li`
         ${(props) => css`
             color: ${props.theme.colors.color_three};
         `};
+    }
+    @media (max-width: 1024px) {
+        h3 {
+          font-size: 1rem;
+        }
     }
 `;

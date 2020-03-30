@@ -61,7 +61,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
     ${(props) => css`
-        font-size: ${props.theme.fontSizes.subHeading[1]}pt;
+        font-size: 1.25rem;
     `};
     width: 100%;
     text-align: right;
@@ -70,6 +70,8 @@ const Subtitle = styled.p`
         ${(props) => css`
             color: ${props.theme.colors.color_three};
         `};
+    }
+    @media (max-width: 1024px) {
     }
 `;
 
@@ -86,6 +88,9 @@ const Inner = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: 1255px) {
+        padding: 2.5rem 3rem;
+    }
 `;
 
 const Widgets = styled.div`
