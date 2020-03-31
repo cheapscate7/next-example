@@ -17,6 +17,10 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
         dispatch(JobsListActions.setList(items));
     }, []);
 
+    React.useEffect(() => {
+        dispatch(JobsListActions.setList(items));
+    }, [state.searchString]);
+
     return (
         <Container>
             <ContainerTitle>Where I have worked:</ContainerTitle>
@@ -26,12 +30,7 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
                 debounceTimeout={200}
                 element={SearchBar}
                 onChange={(e) => {
-                    dispatch(JobsListActions.setList(items));
-                    if(e.target.value === '') {
-                        dispatch(JobsListActions.reset());
-                    } else {
-                        dispatch(JobsListActions.setSearchString(e.target.value));
-                    }
+                    dispatch(JobsListActions.setSearchString(e.target.value));
                 }}
                 value={state.searchString}
             />

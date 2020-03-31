@@ -102,12 +102,7 @@ function reducer(state: State, action: Actions): State {
         case Action.SearchStringChanged:
             return {
                 ...state,
-                searchString: action.payload,
-                jobs: state.jobs.filter((job) =>
-                    job.company_name
-                        .toLowerCase()
-                        .includes(state.searchString.toLowerCase())
-                ),
+                searchString: action.payload
             };
     }
 

@@ -18,7 +18,7 @@ const app = ({ Component, pageProps }) => {
                     content="Channable is the ultimate tool for feed management and PPC automation. Send your items to more than 2500 price comparison websites, affiliate platforms, and marketplaces, or generate ads for Google Ads and Microsoft Advertising."
                 />
                 <meta name="theme-color" content="#1b1a3a" />
-                <link rel="manifest" href="/static/manifest.json" />
+                <link rel="manifest" href="/manifest.json" />
             </Head>
             <ThemeProvider theme={ThemeMain}>
                 <GlobalStyle />

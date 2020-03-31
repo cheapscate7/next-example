@@ -1,0 +1,12 @@
+{
+  "name": "Matthew Badcock",
+  "short_name": "cheapscate7",
+  "description": "my personal website",
+  "icons": [
+
+  ],
+  "theme_color": "#fffffe",
+  "background_color": "#fffffe",
+  "start_url": "/",
+  "display": "standalone"
+}

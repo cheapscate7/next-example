@@ -1,12 +1,12 @@
 {
     "name": "next-example",
     "version": "1.0.0",
-    "description": "",
+    "description": "My website",
     "main": "index.js",
     "scripts": {
         "dev": "next",
         "build": "next build",
-        "start": "next start",
+        "start": "next start NODE_ENV=production",
         "pretty-quick": "pretty-quick",
         "export": "next build && next export"
     },
