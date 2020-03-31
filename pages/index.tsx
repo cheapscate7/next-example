@@ -53,12 +53,13 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
 // };
 
 export async function getServerSideProps() {
+    const base = process.env.base_url;
     const index_response = await fetch(
-        'http://localhost:3000/api/index'
+        `${base}/api/index`
     ).then((resp) => resp.json());
 
     const jobs_response = await fetch(
-        `http://localhost:3000/api/jobs`
+        `${base}/api/jobs`
     ).then((resp) => resp.json());
 
     return {
