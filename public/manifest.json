@@ -1,12 +1,21 @@
 {
-  "name": "Matthew Badcock",
+  "name": "Matthew Badcock - Personal website",
   "short_name": "cheapscate7",
-  "description": "my personal website",
   "icons": [
-
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
   ],
-  "theme_color": "#fffffe",
-  "background_color": "#fffffe",
+  "background_color": "#FFFFFe",
+  "description": "My Personal website",
+  "display": "fullscreen",
   "start_url": "/",
-  "display": "standalone"
+  "theme_color": "#fcdb67"
 }
