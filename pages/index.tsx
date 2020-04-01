@@ -7,14 +7,15 @@ import JobsSearch from '../components/JobsSearch/JobsSearch';
 
 type HomeProps = {
     title: string;
-    subtitle: string;
+    subtitle: string[];
     blob: IBlob[];
     jobs: IJob[];
 };
 
 const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
-    const searchres = '';
-    const subtitleMarkup = { __html: subtitle };
+    const createMarkup = (sting) => {
+        return { __html: sting };
+    }
     return (
         <>
             <Title>{title}</Title>
@@ -26,7 +27,9 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
                         src={'/me.jpg'}
                         alt="picture_of_me"
                     />{' '}
-                    <Subtitle dangerouslySetInnerHTML={subtitleMarkup} />
+                    {subtitle.map((s) => (
+                        <Subtitle dangerouslySetInnerHTML={createMarkup(s)} />
+                    ))}
                 </div>
                 <Widgets>
                     <BlobViewer items={blob} />
@@ -51,7 +54,6 @@ Home.getInitialProps = async () => {
         jobs: jobs_response,
     };
 };
-
 
 export default Home;
 
