@@ -24,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
                     <Icon
                         radius="2px"
                         elevated
-                        src={'/me.jpg'}
+                        src={'/me.webp'}
                         alt="picture_of_me"
                     />{' '}
                     {subtitle.map((s, index) => (
