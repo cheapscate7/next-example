@@ -28,11 +28,10 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
                 type="text"
                 placeholder="Search"
                 debounceTimeout={200}
-                element={SearchBar}
+                element={SearchBarWithLabel}
                 onChange={(e) => {
                     dispatch(JobsListActions.setSearchString(e.target.value));
                 }}
-                label="job_search"
                 value={state.searchString}
             />
             <Items>
@@ -47,14 +46,6 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
 };
 
 export default JobsSearch;
-
-const SearchBar = styled.input`
-    border: 0;
-    width: calc(100% - 2rem);
-    padding: 1rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
-    outline: none;
-`;
 
 const Container = styled.section`
     width: 30%;
@@ -103,4 +94,22 @@ const JobContainer = styled.li`
     .duration {
         font-style: italic;
     }
+`;
+
+
+/**
+ * We have to have this little wrapper so that we can add a label for accessibility
+ * @param props
+ * @constructor
+ */
+const SearchBarWithLabel: React.FC = (props) => {
+    return <SearchBar label="search_bar" {...props} />
+};
+
+const SearchBar = styled.input`
+    border: 0;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
+    outline: none;
 `;

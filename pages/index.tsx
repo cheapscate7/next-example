@@ -5,6 +5,7 @@ import fetch from 'isomorphic-unfetch';
 import { ExpandingDiv, RoundedImg } from '../components/StyledComponents';
 import JobsSearch from '../components/JobsSearch/JobsSearch';
 
+
 type HomeProps = {
     title: string;
     subtitle: string[];
