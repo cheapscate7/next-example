@@ -32,6 +32,7 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
                 onChange={(e) => {
                     dispatch(JobsListActions.setSearchString(e.target.value));
                 }}
+                label="job_search"
                 value={state.searchString}
             />
             <Items>
