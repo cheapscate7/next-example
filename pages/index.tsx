@@ -37,38 +37,21 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
     );
 };
 
-// Home.getInitialProps = async () => {
-//     const base = process.env.base_url;
-//     const index_response = await fetch(`${base}/api/index`).then((resp) =>
-//         resp.json()
-//     );
-//     const jobs_response = await fetch(`${base}/api/jobs`).then((resp) =>
-//         resp.json()
-//     );
-//
-//     return {
-//         ...index_response,
-//         jobs: jobs_response,
-//     };
-// };
-
-export async function getServerSideProps() {
+Home.getInitialProps = async () => {
     const base = process.env.base_url;
-    const index_response = await fetch(
-        `${base}/api/index`
-    ).then((resp) => resp.json());
-
-    const jobs_response = await fetch(
-        `${base}/api/jobs`
-    ).then((resp) => resp.json());
+    const index_response = await fetch(`${base}/about_me.json`).then((resp) =>
+        resp.json()
+    );
+    const jobs_response = await fetch(`${base}/jobs.json`).then((resp) =>
+        resp.json()
+    );
 
     return {
-        props: {
-            ...index_response,
-            jobs: jobs_response,
-        },
+        ...index_response,
+        jobs: jobs_response,
     };
-}
+};
+
 
 export default Home;
 
