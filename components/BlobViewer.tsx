@@ -18,8 +18,11 @@ const BlobViewer: React.FC<BlobViewerProps> = ({ items }) => {
 export default BlobViewer;
 
 const BlobList = styled.ul`
-  list-style-type: none;
-  width: 65%;
+    list-style-type: none;
+    width: 65%;
+    @media (max-width: 690px) {
+        width: 100%;
+    }
 `;
 
 type BlobItemProps = {
@@ -62,7 +65,7 @@ const Item = styled.li`
     }
     @media (max-width: 1024px) {
         h3 {
-          font-size: 1rem;
+            font-size: 1rem;
         }
     }
 `;

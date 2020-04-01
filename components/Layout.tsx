@@ -1,14 +1,18 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faAdjust, faBook } from '@fortawesome/free-solid-svg-icons';
+import Head from 'next/head';
 
 const Layout: FC = (props) => {
     const router = useRouter();
     return (
         <Container>
+            <Head>
+                <title>Matthew Badcock {router.pathname === '/' ? 'home' : 'about'}</title>
+            </Head>
             <Nav>
                 <ul>
                     <li className="title">
@@ -83,6 +87,7 @@ const Nav = styled.nav`
                     font-weight: ${(props) => props.theme.fontWeights.normal};
                     font-size: ${(props) =>
                         props.theme.fontSizes.subHeading[0]}pt;
+                    text-align: center;
                 }
             }
             &:hover {
@@ -120,5 +125,20 @@ const Container = styled.section`
     grid-template-rows: 100vh;
     @media (min-width: 1024px) {
         grid-template-columns: 204px calc(100% - 204px);
+    }
+    @media (max-width: 690px) {
+        grid-template-columns: 20% 80%;
+        .title {
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+    }
+    @media (max-width: 425px) {
+        .title {
+            h1 {
+                font-size: 1rem;
+            }
+        }
     }
 `;

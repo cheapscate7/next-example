@@ -15,7 +15,7 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
     const createMarkup = (sting) => {
         return { __html: sting };
-    }
+    };
     return (
         <>
             <Title>{title}</Title>
@@ -27,8 +27,8 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
                         src={'/me.jpg'}
                         alt="picture_of_me"
                     />{' '}
-                    {subtitle.map((s) => (
-                        <Subtitle dangerouslySetInnerHTML={createMarkup(s)} />
+                    {subtitle.map((s, index) => (
+                        <Subtitle key={`${index}_subtitle`} dangerouslySetInnerHTML={createMarkup(s)} />
                     ))}
                 </div>
                 <Widgets>
@@ -64,9 +64,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-    ${(props) => css`
-        font-size: 1.25rem;
-    `};
+    font-size: 1.25rem;
     width: 100%;
     text-align: right;
     .italics {
@@ -75,7 +73,9 @@ const Subtitle = styled.p`
             color: ${props.theme.colors.color_three};
         `};
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 425px) {
+        text-align: center;
+        font-size: 1rem;
     }
 `;
 
@@ -84,6 +84,9 @@ const Icon = styled(RoundedImg)`
     shape-outside: inset();
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+    @media (max-width: 425px) {
+        width: 100%;
+    }
 `;
 
 const Inner = styled.section`
@@ -102,4 +105,8 @@ const Widgets = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 3.5rem;
+    @media (max-width: 690px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;

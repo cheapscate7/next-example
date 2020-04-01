@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import {DebounceInput} from 'react-debounce-input';
+import { DebounceInput } from 'react-debounce-input';
 import {
     useSalesChannelList,
     JobsListActions,
@@ -57,6 +57,9 @@ const SearchBar = styled.input`
 
 const Container = styled.section`
     width: 30%;
+    @media (max-width: 690px) {
+        width: 100%;
+    }
 `;
 
 const Items = styled.ul`
