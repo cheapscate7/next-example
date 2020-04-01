@@ -27,7 +27,10 @@ export const ThemeMain: Theme = {
         text: [9, 11],
         subText: [7, 9],
     },
-    shadows: ['inset 0 0 0 1px #ddd, 0 0 10px 0 rgba(0,0,0,.1)', '0px 0px 6px 0px rgba(0,0,0,0.75)'],
+    shadows: [
+        'inset 0 0 0 1px #ddd, 0 0 10px 0 rgba(0,0,0,.1)',
+        '0px 0px 6px 0px rgba(0,0,0,0.75)',
+    ],
     fontFamily: [
         '"Roboto", -apple-system, sans-serif',
         '"Poppins", -apple-system, sans-serif',
@@ -44,15 +47,18 @@ export const GlobalStyle = createGlobalStyle`
   @font-face {
       font-family: 'Roboto';
       font-weight: bold;
+      font-display: swap;
       src: url('/fonts/Roboto-Bold.ttf');
   }
   @font-face {
       font-family: 'Roboto';
+      font-display: swap;
       src: url('/fonts/Roboto-Regular.ttf');
       font-weight: 400;
   }
   @font-face {
       font-family: 'Roboto';
+      font-display: swap;
       src: url('/fonts/Roboto-Light.ttf');
       font-weight: 300;
   }
@@ -62,16 +68,19 @@ export const GlobalStyle = createGlobalStyle`
    */
   @font-face {
       font-family: 'Poppins';
+      font-display: swap;
       src: url('/fonts/Poppins-Bold.ttf');
       font-weight: bold;
   }
   @font-face {
       font-family: 'Poppins';
+      font-display: swap;
       src: url('/fonts/Poppins-Regular.ttf');
       font-weight: 400;
   }
   @font-face {
       font-family: 'Poppins';
+      font-display: swap;
       src: url('/fonts/Poppins-Light.ttf');
       font-weight: 300;
   }
