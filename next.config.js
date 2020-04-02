@@ -9,6 +9,7 @@ module.exports = withOffline(
         exportPathMap: function () {
             return {
                 '/': { page: '/' },
+                '/about': { page: '/about' },
             };
         },
         env: {

@@ -132,7 +132,7 @@ export const GlobalStyle = createGlobalStyle`
  * DIV
  **/
 
-const Div = styled.div`
+export const Div = styled.div`
     ${(props) =>
         props.elevated &&
         css`
@@ -175,7 +175,7 @@ export const RoundedImg = styled(Img)`
  * SPANS
  */
 
-const Code = styled.span`
+export const Code = styled.span`
     font-family: ${props => props.theme.fontFamily[0]};
     font-size: calc(1em - 2px);
     color: #555;
