@@ -103,7 +103,7 @@ const JobContainer = styled.li`
  * @constructor
  */
 const SearchBarWithLabel: React.FC = (props) => {
-    return <SearchBar label="search_bar" {...props} />
+    return <label><SearchBar {...props} /></label>
 };
 
 const SearchBar = styled.input`
