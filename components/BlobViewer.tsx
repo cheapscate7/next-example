@@ -57,12 +57,7 @@ const Item = styled.li`
     p {
         margin: auto 0.1rem;
     }
-    .italics {
-        font-style: italic;
-        ${(props) => css`
-            color: ${props.theme.colors.color_three};
-        `};
-    }
+    
     @media (max-width: 1024px) {
         h3 {
             font-size: 1rem;

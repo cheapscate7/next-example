@@ -7,7 +7,7 @@ module.exports = withOffline(
         target: 'serverless',
 
         env: {
-            base_url: 'https://cheapscate7.github.io/json-repo',
+            base_url: 'https://cheapscate7.github.io/json-repo/next-example',
         },
         webpack(config, options) {
             return config;

@@ -68,12 +68,7 @@ const Subtitle = styled.p`
     font-size: 1.25rem;
     width: 100%;
     text-align: right;
-    .italics {
-        font-style: italic;
-        ${(props) => css`
-            color: ${props.theme.colors.color_three};
-        `};
-    }
+    
     @media (max-width: 425px) {
         text-align: center;
         font-size: 1rem;

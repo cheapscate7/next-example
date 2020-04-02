@@ -34,6 +34,7 @@ export const ThemeMain: Theme = {
     fontFamily: [
         '"Roboto", -apple-system, sans-serif',
         '"Poppins", -apple-system, sans-serif',
+        'menlo, inconsolata, monospace'
     ],
 };
 
@@ -119,8 +120,13 @@ export const GlobalStyle = createGlobalStyle`
     }
     p {
       margin: 0;
+      .italics {
+        font-style: italic;
+        ${(props) => css`
+            color: ${props.theme.colors.color_three};
+        `};
+      }
     }
-    
 `;
 /**
  * DIV
@@ -163,4 +169,17 @@ const Img = styled.img`
 
 export const RoundedImg = styled(Img)`
     border-radius: ${(props) => props.radius || '5px'};
+`;
+
+/**
+ * SPANS
+ */
+
+const Code = styled.span`
+    font-family: ${props => props.theme.fontFamily[0]};
+    font-size: calc(1em - 2px);
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 2px;
 `;

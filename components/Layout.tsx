@@ -121,7 +121,7 @@ const Main = styled.main`
 
 const Container = styled.section`
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
     grid-template-rows: 100vh;
     @media (min-width: 1024px) {
         grid-template-columns: 204px calc(100% - 204px);
@@ -139,6 +139,17 @@ const Container = styled.section`
             h1 {
                 font-size: 1rem;
             }
+        }
+        .item {
+        a {
+          grid-template-columns: 99% 1% !important;
+          h1 {
+            display: none;
+          }
+          svg {
+            width: 40%;
+          }
+        }
         }
     }
 `;
