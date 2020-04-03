@@ -3,6 +3,11 @@ declare interface IBlob {
     description: string,
 }
 
+declare interface ISection {
+    title: string;
+    subtitle: string[];
+}
+
 declare interface IJob {
     id: number,
     company_name: string,
@@ -45,3 +50,5 @@ declare interface Theme {
     shadows: string[],
     fontFamily: string[],
 }
+
+declare type SubtitleAlignment = 'left' | 'right';

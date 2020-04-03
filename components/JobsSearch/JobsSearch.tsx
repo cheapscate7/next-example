@@ -17,8 +17,17 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
         dispatch(JobsListActions.setList(items));
     }, []);
 
+    //filter items on string change
     React.useEffect(() => {
-        dispatch(JobsListActions.setList(items));
+        dispatch(
+            JobsListActions.setList(
+                items.filter((job: IJob) =>
+                    job.company_name
+                        .toLowerCase()
+                        .includes(state.searchString.toLowerCase())
+                )
+            )
+        );
     }, [state.searchString]);
 
     return (
@@ -35,11 +44,11 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
                 value={state.searchString}
             />
             <Items>
-                {state.jobs.map((job, index) => {
+                {state.jobs.length > 0 ? state.jobs.map((job, index) => {
                     return (
                         <Job job={job} key={index + '_' + job.company_name} />
                     );
-                })}
+                }): <p>No jobs found</p>}
             </Items>
         </Container>
     );
@@ -96,14 +105,17 @@ const JobContainer = styled.li`
     }
 `;
 
-
 /**
  * We have to have this little wrapper so that we can add a label for accessibility
  * @param props
  * @constructor
  */
 const SearchBarWithLabel: React.FC = (props) => {
-    return <label><SearchBar {...props} /></label>
+    return (
+        <label>
+            <SearchBar {...props} />
+        </label>
+    );
 };
 
 const SearchBar = styled.input`

@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import fetch from 'isomorphic-unfetch';
 import { ExpandingDiv, RoundedImg } from '../components/StyledComponents';
 import JobsSearch from '../components/JobsSearch/JobsSearch';
+import SubtitleCard from "../components/cards/SubtitleCard";
 
 type HomeProps = {
     title: string;
@@ -13,26 +14,13 @@ type HomeProps = {
 };
 
 const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
-    const createMarkup = (string) => {
-        return { __html: string };
-    };
+
     return (
         <>
             <Title>{title}</Title>
             <Inner>
                 <div>
-                    <Icon
-                        radius="2px"
-                        elevated
-                        src={'/me.webp'}
-                        alt="picture_of_me"
-                    />{' '}
-                    {subtitle.map((s, index) => (
-                        <Subtitle
-                            key={`${index}_subtitle`}
-                            dangerouslySetInnerHTML={createMarkup(s)}
-                        />
-                    ))}
+                    <SubtitleCard subtitle={subtitle} iconSrc={'/me.webp'} iconAlt={'picture_of_me'}/>
                 </div>
                 <Widgets>
                     <BlobViewer items={blob} />
@@ -66,26 +54,9 @@ const Title = styled.h1`
     font-size: ${(props) => props.theme.fontSizes.jumbotron[0]}pt;
 `;
 
-const Subtitle = styled.p`
-    font-size: 1.25rem;
-    width: 100%;
-    text-align: right;
 
-    @media (max-width: 425px) {
-        text-align: center;
-        font-size: 1rem;
-    }
-`;
 
-const Icon = styled(RoundedImg)`
-    float: left;
-    shape-outside: inset();
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    @media (max-width: 425px) {
-        width: 100%;
-    }
-`;
+
 
 const Inner = styled.section`
     padding: 5rem 10rem;
@@ -102,6 +73,7 @@ const Widgets = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
     margin-top: 3.5rem;
     @media (max-width: 690px) {
         flex-direction: column;

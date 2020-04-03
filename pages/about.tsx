@@ -2,42 +2,27 @@ import BlobViewer from '../components/BlobViewer';
 import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
 import fetch from 'isomorphic-unfetch';
-import { ExpandingDiv, RoundedImg, Code } from '../components/StyledComponents';
-// import FindMeCard from '../components/FindMeCard';
-
+import SubtitleCard from '../components/cards/SubtitleCard';
 
 type HomeProps = {
     title: string;
     subtitle: string[];
-    blob_title: string;
-    blob: IBlob[];
+    sections: ISection[];
     find_me: IFindMe[];
 };
 
-const Home: NextPage<HomeProps> = ({ title, subtitle, blob, find_me }) => {
-    const createMarkup = (string) => {
-        return { __html: string };
-    };
+const Home: NextPage<HomeProps> = ({ title, subtitle, sections, find_me }) => {
     return (
         <>
             <Title>{title}</Title>
             <Inner>
-                <div>
-                    {subtitle.map((s, index) => (
-                        <Subtitle
-                            key={`${index}_subtitle`}
-                            dangerouslySetInnerHTML={createMarkup(s)}
-                        />
-                    ))}
-                </div>
-                <Widgets>
-                    <BlobViewer items={blob} />
-                    {/*<ExpandingDiv>*/}
-                    {/*    {find_me.map((item, index) => {*/}
-                    {/*        return <FindMeCard item={item} key={`${index}_card`} />*/}
-                    {/*    })}*/}
-                    {/*</ExpandingDiv>*/}
-                </Widgets>
+                <SubtitleCard subtitle={subtitle} />
+                {sections.map((section, index) => (
+                    <Section
+                        section={section}
+                        key={`about_section_${index}`}
+                    ></Section>
+                ))}
             </Inner>
         </>
     );
@@ -58,17 +43,6 @@ const Title = styled.h1`
     font-size: ${(props) => props.theme.fontSizes.jumbotron[0]}pt;
 `;
 
-const Subtitle = styled.p`
-    font-size: 1.25rem;
-    width: 100%;
-    text-align: right;
-
-    @media (max-width: 425px) {
-        text-align: center;
-        font-size: 1rem;
-    }
-`;
-
 const Inner = styled.section`
     padding: 5rem 10rem;
     padding-bottom: 0;
@@ -80,13 +54,44 @@ const Inner = styled.section`
     }
 `;
 
-const Widgets = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 3.5rem;
-    @media (max-width: 690px) {
-        flex-direction: column;
-        align-items: center;
+type SectionProps = {
+    section: ISection;
+};
+
+const Section: React.FC<SectionProps> = ({ section }) => {
+    const createMarkup = (string) => {
+        return { __html: string };
+    };
+    return (
+        <SectionContainer>
+            <SectionTitle>{section.title}</SectionTitle>
+            <SectionList>
+                {section.subtitle.map((point, index) => (
+                    <li key={`${index}_section_point`}>
+                        <p dangerouslySetInnerHTML={createMarkup(point)}></p>
+                    </li>
+                ))}
+            </SectionList>
+        </SectionContainer>
+    );
+};
+
+const SectionContainer = styled.section`
+  text-align: left;
+`;
+
+const SectionTitle = styled.h2`
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: ${(props) => props.theme.fontSizes.heading[0]}pt;
+    color: ${props => props.theme.colors.color_two};
+`;
+
+const SectionList = styled.ul`
+    list-style-type: none;
+    font-size: 1.1rem;
+    li {
+        margin: 0;
     }
 `;

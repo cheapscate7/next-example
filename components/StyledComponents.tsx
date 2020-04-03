@@ -126,6 +126,14 @@ export const GlobalStyle = createGlobalStyle`
             color: ${props.theme.colors.color_three};
         `};
       }
+      .code {
+        font-family: ${props => props.theme.fontFamily[2]};
+        font-size: calc(1em - 2px);
+        color: #555;
+        background-color: #f0f0f0;
+        padding: 0.2em 0.4em;
+        border-radius: 2px;
+      }
     }
 `;
 /**
@@ -176,7 +184,7 @@ export const RoundedImg = styled(Img)`
  */
 
 export const Code = styled.span`
-    font-family: ${props => props.theme.fontFamily[0]};
+    font-family: ${props => props.theme.fontFamily[2]};
     font-size: calc(1em - 2px);
     color: #555;
     background-color: #f0f0f0;
