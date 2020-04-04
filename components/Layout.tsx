@@ -68,7 +68,7 @@ const Nav = styled.nav`
         }
         .title {
             margin: auto;
-            font-size: ${(props) => props.theme.fontSizes.heading[0]}pt;
+            font-size: 1.9rem;
             text-align: center;
         }
         .item {

@@ -191,3 +191,15 @@ export const Code = styled.span`
     padding: 0.2em 0.4em;
     border-radius: 2px;
 `;
+
+/**
+ * Headers
+ */
+
+export const SectionTitle = styled.h2`
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: ${(props) => props.theme.fontSizes.heading[0]}pt;
+    color: ${(props) => props.theme.colors.color_two};
+`;

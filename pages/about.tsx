@@ -3,6 +3,8 @@ import { NextPage } from 'next';
 import styled, { css } from 'styled-components';
 import fetch from 'isomorphic-unfetch';
 import SubtitleCard from '../components/cards/SubtitleCard';
+import FindMeCards from '../components/FindMeCard';
+import {SectionTitle} from "../components/StyledComponents";
 
 type HomeProps = {
     title: string;
@@ -18,11 +20,9 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, sections, find_me }) => {
             <Inner>
                 <SubtitleCard subtitle={subtitle} />
                 {sections.map((section, index) => (
-                    <Section
-                        section={section}
-                        key={`about_section_${index}`}
-                    ></Section>
+                    <Section section={section} key={`about_section_${index}`} />
                 ))}
+                <FindMeCards items={find_me}></FindMeCards>
             </Inner>
         </>
     );
@@ -68,7 +68,7 @@ const Section: React.FC<SectionProps> = ({ section }) => {
             <SectionList>
                 {section.subtitle.map((point, index) => (
                     <li key={`${index}_section_point`}>
-                        <p dangerouslySetInnerHTML={createMarkup(point)}></p>
+                        <p dangerouslySetInnerHTML={createMarkup(point)} />
                     </li>
                 ))}
             </SectionList>
@@ -77,16 +77,10 @@ const Section: React.FC<SectionProps> = ({ section }) => {
 };
 
 const SectionContainer = styled.section`
-  text-align: left;
+    text-align: left;
 `;
 
-const SectionTitle = styled.h2`
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    text-align: left;
-    font-size: ${(props) => props.theme.fontSizes.heading[0]}pt;
-    color: ${props => props.theme.colors.color_two};
-`;
+
 
 const SectionList = styled.ul`
     list-style-type: none;
