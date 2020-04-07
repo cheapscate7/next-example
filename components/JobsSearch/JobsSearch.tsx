@@ -32,7 +32,7 @@ const JobsSearch: React.FC<JobsSearchProps> = ({ items }) => {
 
     return (
         <Container>
-            <ContainerTitle>Where I have worked:</ContainerTitle>
+            {/*<ContainerTitle>Where I have worked:</ContainerTitle>*/}
             <DebounceInput
                 type="text"
                 placeholder="Search"
@@ -112,9 +112,10 @@ const JobContainer = styled.li`
  */
 const SearchBarWithLabel: React.FC = (props) => {
     return (
-        <label>
+        <Label>
+            Where I have worked
             <SearchBar {...props} />
-        </label>
+        </Label>
     );
 };
 
@@ -124,4 +125,9 @@ const SearchBar = styled.input`
     padding: 1rem;
     border-bottom: 1px solid ${(props) => props.theme.colors.highlight};
     outline: none;
+`;
+
+const Label = styled.label`
+  color: ${(props) => props.theme.colors.highlight};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
 `;

@@ -22,7 +22,7 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, sections, find_me }) => {
                 {sections.map((section, index) => (
                     <Section section={section} key={`about_section_${index}`} />
                 ))}
-                <FindMeCards items={find_me}></FindMeCards>
+                <FindMeCards items={find_me} />
             </Inner>
         </>
     );
