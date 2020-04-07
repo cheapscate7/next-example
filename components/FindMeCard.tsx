@@ -33,9 +33,9 @@ type FindMeCardProps = {
 const FindMeCard: React.FC<FindMeCardProps> = ({ item }) => {
     return (
         <AlignedDiv>
-            <HoverLink href={item.link}>
+            <HoverLink href={item.link} aria-label={`${item.name}_link`}>
                 <IconOverlay>{item.label}</IconOverlay>
-                <Icon radius="2px" elevated src={`${item.name}.webp`} />
+                <Icon radius="2px" elevated src={`${item.name}.webp`} alt={`${item.name}_link`}/>
             </HoverLink>
         </AlignedDiv>
     );

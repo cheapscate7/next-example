@@ -24,6 +24,17 @@ module.exports = withOffline(
                         },
                     },
                 },
+                {
+                    urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+                    handler: 'CacheFirst',
+                    options: {
+                        cacheName: 'images',
+
+                        expiration: {
+                            maxEntries: 15,
+                        },
+                    },
+                },
             ],
         },
         exportTrailingSlash: true,
