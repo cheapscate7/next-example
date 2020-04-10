@@ -5,6 +5,8 @@ import fetch from 'isomorphic-unfetch';
 import SubtitleCard from '../components/cards/SubtitleCard';
 import FindMeCards from '../components/FindMeCard';
 import {SectionTitle} from "../components/StyledComponents";
+import Head from "next/head";
+import React from "react";
 
 type HomeProps = {
     title: string;
@@ -16,6 +18,12 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = ({ title, subtitle, sections, find_me }) => {
     return (
         <>
+            <Head>
+                <meta
+                    name="Description"
+                    content="Here are the reasons for using Nextjs as the framework for my personal website"
+                />
+            </Head>
             <Title>{title}</Title>
             <Inner>
                 <SubtitleCard subtitle={subtitle} />

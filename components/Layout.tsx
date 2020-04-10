@@ -11,7 +11,7 @@ const Layout: FC = (props) => {
     return (
         <Container>
             <Head>
-                <title>Matthew Badcock {router.pathname === '/' ? '🏠' : '❓'}</title>
+                <title>{router.pathname === '/' ? '🏠' : '❓'} Matthew Badcock - Javscript Developer Personal website | {router.pathname === '/' ? 'Home page' : 'About'}</title>
             </Head>
             <Nav>
                 <ul>

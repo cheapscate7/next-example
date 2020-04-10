@@ -5,6 +5,8 @@ import fetch from 'isomorphic-unfetch';
 import { ExpandingDiv, RoundedImg } from '../components/StyledComponents';
 import JobsSearch from '../components/JobsSearch/JobsSearch';
 import SubtitleCard from "../components/cards/SubtitleCard";
+import Head from "next/head";
+import React from "react";
 
 type HomeProps = {
     title: string;
@@ -17,6 +19,12 @@ const Home: NextPage<HomeProps> = ({ title, subtitle, blob, jobs }) => {
 
     return (
         <>
+            <Head>
+                <meta
+                    name="Description"
+                    content="Personal website for Matthew Badcock. This is an example of Nextjs. On this page you can find a Q&A and also view my previous jobs"
+                />
+            </Head>
             <Title>{title}</Title>
             <Inner>
                 <div>

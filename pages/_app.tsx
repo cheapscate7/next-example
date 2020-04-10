@@ -15,7 +15,7 @@ const app = ({ Component, pageProps }) => {
                 />
                 <meta
                     name="Description"
-                    content="Personal website for Matthew Badcock"
+                    content="Personal website for Matthew Badcock, also a nextjs example"
                 />
                 <link rel="shortcut icon" href="/favicon.ico" />
                 <meta name="theme-color" content="#fffffe" />
