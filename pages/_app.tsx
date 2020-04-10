@@ -13,10 +13,7 @@ const app = ({ Component, pageProps }) => {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
-                <meta
-                    name="Description"
-                    content="Personal website for Matthew Badcock, also a nextjs example"
-                />
+                <meta name="google-site-verification" content="d2lWVAQvPaEaMdwuxMlACOIMMIHdg4lUocBITDWYwfw" />
                 <link rel="shortcut icon" href="/favicon.ico" />
                 <meta name="theme-color" content="#fffffe" />
                 <link rel="manifest" href="/manifest.json" />
